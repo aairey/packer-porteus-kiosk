@@ -1,0 +1,4 @@
+env.sh
+packer_cache/
+*.box
+porteus-kiosk-atlas.json

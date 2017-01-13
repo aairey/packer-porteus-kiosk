@@ -1,0 +1,76 @@
+{
+    "builders": [
+        {
+            "type": "virtualbox-iso",
+            "boot_command": [
+                "<enter>",
+                "<enter>",
+                "<bs><enter>",
+                "<enter>",
+                "<wait><enter>",
+                "<wait10><wait10><wait10><wait10>",
+                "<tab><tab><enter>",
+                "<bs>http://{{ .HTTPIP }}:{{ .HTTPPort }}/porteus-kiosk.cfg<enter>",
+                "<wait10>",
+                "<leftCtrlOn><tab><leftCtrlOff>",
+                "<tab><tab><tab><tab><enter>",
+                "<tab><tab><tab><tab><tab><tab><tab><enter>",
+                "<tab><tab><tab><spacebar><tab><tab><tab><tab><tab><tab><enter>"
+            ],
+            "headless": true,
+            "boot_wait": "10s",
+            "disk_size": 20480,
+            "guest_os_type": "Linux_64",
+            "http_directory": "http",
+            "iso_checksum_type": "md5",
+            "iso_url": "http://porteus-kiosk.org/public/4.2/Porteus-Kiosk-4.2.0-x86_64.iso",
+            "iso_checksum": "a4d8f659ea81b2b97e84d6df87451c49",
+            "ssh_username": "root",
+            "ssh_password": "vagrant",
+            "ssh_port": 22,
+            "ssh_wait_timeout": "10000s",
+            "shutdown_command": "poweroff",
+            "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
+            "virtualbox_version_file": ".vbox_version"
+        },
+        {
+            "type": "vmware-iso",
+            "boot_command": [
+                "<enter>",
+                "<enter>",
+                "<bs><enter>",
+                "<enter>",
+                "<wait><enter>",
+                "<wait10><wait10><wait10><wait10>",
+                "<tab><tab><enter>",
+                "<bs>http://{{ .HTTPIP }}:{{ .HTTPPort }}/porteus-kiosk.cfg<enter>",
+                "<wait10>",
+                "<leftCtrlOn><tab><leftCtrlOff>",
+                "<tab><tab><tab><tab><enter>",
+                "<tab><tab><tab><tab><tab><tab><tab><enter>",
+                "<tab><tab><tab><spacebar><tab><tab><tab><tab><tab><tab><enter>"
+            ],
+            "boot_wait": "10s",
+            "disk_size": 20480,
+            "guest_os_type": "Linux-64",
+            "headless": true,
+            "http_directory": "http",
+            "iso_checksum_type": "md5",
+            "iso_url": "http://porteus-kiosk.org/public/4.2/Porteus-Kiosk-4.2.0-x86_64.iso",
+            "iso_checksum": "a4d8f659ea81b2b97e84d6df87451c49",
+            "skip_compaction": true,
+            "ssh_username": "root",
+            "ssh_password": "vagrant",
+            "ssh_port": 22,
+            "ssh_wait_timeout": "10000s",
+            "shutdown_command": "poweroff",
+            "tools_upload_flavor": "linux"
+        }
+    ],
+    "post-processors": [
+        {
+            "type": "vagrant",
+            "keep_input_artifact": false
+         }
+     ]
+}
